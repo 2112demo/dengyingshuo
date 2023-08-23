@@ -98,7 +98,6 @@ export default {
 }
 </script>
 
-
 <style>
   @import url("./css/base.css");
   @import url("./assets/font/iconfont.css");
@@ -155,6 +154,7 @@ export default {
     box-sizing: border-box;
     height: calc(100vh - 63px);
     text-align: left;
+    box-shadow: 5px 5px 10px 0 #e6e6e6;
   }
   .main-lef-box p{
     font-size: 13px;
@@ -175,6 +175,10 @@ export default {
     margin-right: 15px;
   }
   .main-lef-box h3.active{
+    color: #2c4198;
+    background: #e1e0e0;
+  }
+  .main-lef-box h3:hover{
     color: #2c4198;
     background: #e1e0e0;
   }

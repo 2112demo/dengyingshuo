@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="count">
+      +
+      <input type="text" v-model="num">
+      =
+      <input type="text" v-model="calc">
+    </div>
+  </body>
+  <script>
+    var Vue = new Vue({
+      el: '#app',
+      data () {
+        return {
+          count: '',
+          num: ''
+        }
+      },
+      methods: {
+      },
+      // 计算属性,专门对现有的data数据做计算,重新获取新的数据.
+      computed: {
+        calc: { //完整写法 get() set()
+          // get 获取,计算 指定值 返回给 calc属性
+          get () {
+            return this.count + this.num
+          },
+          set (value) {
+            console.log(value)
+            var arr1 = value.slice(0,1)
+            this.count = arr1
+            var arr2 = value.slice(1)
+            this.num = arr2
+            
+          }
+        },
+        calc () { //简写 get()
+          get () {
+            return this.count + this.num
+          }
+        }
+      }
+    })
+  </script>
+</html>
