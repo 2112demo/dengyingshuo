@@ -1,10 +1,10 @@
 <template>
   <div class="box">
     <div class="header d-flex justify-between align-center">
-      <div class="logo_box iconfont icon-weixinzhifu">灵活用工服务平台</div>
+      <div class="logo_box iconfont icon-weixinzhifu" :style="{width:isMedia === false ? '80px' : '250px'}"><span :style="{display: isMedia === false ? 'none' : 'inline-block'}">灵活用工服务平台</span></div>
       <div class="head_box flex-1 d-flex justify-between">
         <div class="head-lef-box">
-          <i class="change iconfont icon-fenlei2"></i>
+          <i class="change iconfont icon-fenlei2" @click="mediaBtn"></i>
           <i class="iconfont icon-qianbao"></i>
         </div>
         <div class="head-rig-box">
@@ -14,19 +14,19 @@
       </div>
     </div>
     <div class="bodyer d-flex justify-between">
-      <div class="main-lef-box">
+      <div class="main-lef-box" :style="{width:isMedia === false ? '80px' : '250px'}">
         <div>
-          <p>常规操作</p>
-          <h3 class="iconfont icon-baokuan-">首页</h3>
+          <p class="one_hide" :style="{display: isMedia === false ? 'none' : 'block'}">常规操作</p>
+          <h3 class="iconfont icon-shouye"><span class="one_hide" :style="{display: isMedia === false ? 'none' : 'inline-block'}">首页</span></h3>
         </div>
         <div>
-          <p>业务管理</p>
+          <p class="one_hide" :style="{display: isMedia === false ? 'none' : 'block'}">业务管理</p>
           <ul>
             <li v-for="item in list" :key="item.id">
-              <h3 @click="changeIndex(item.id)" :class="[item.icon, {active: showIndex !== item.id?false:true}]">{{ item.title }}</h3>
+              <h3 @click="changeIndex(item.id)" :class="[item.icon, {active: showIndex !== item.id?false:true}]"><span class="one_hide" :style="{display: isMedia === false ? 'none' : 'inline-block'}">{{ item.title }}</span></h3>
               <dl :class="{'height0': showIndex === item.id?false:true}">
                 <dd v-for="list in item.list" :key="list.id">
-                  <a class="iconfont icon-gengduo" :href="list.router">{{ list.name }}</a>
+                  <a class="iconfont icon-gengduo one_hide" :href="list.router">{{ list.name }}</a>
                   <!-- <router-link :to="list.router">{{ list.name }}</router-link> -->
                 </dd>
               </dl>
@@ -34,8 +34,8 @@
           </ul>
         </div>
         <div>
-          <p>服务中心</p>
-          <h3 class="iconfont icon-baokuan-">身份&安全</h3>
+          <p class="one_hide" :style="{display: isMedia === false ? 'none' : 'block'}">服务中心</p>
+          <h3 class="iconfont icon-fangdajing"><span class="one_hide" :style="{display: isMedia === false ? 'none' : 'inline-block'}">身份&安全</span></h3>
         </div>
       </div>
       <div class="main-rig-box flex-1">
@@ -50,12 +50,13 @@ export default {
   name: 'App',
   data () {
     return {
+      isMedia: true,
       showIndex: '',
       list: [
         {
           id: 1,
           title: '项目任务',
-          icon: 'iconfont icon-baokuan-',
+          icon: 'iconfont icon-shanchu',
           list: [
             {id: 1, name: '批量新建订单', router: '/projectNew'},
             {id: 2, name: '项目列表', router: '/projectNew1'},
@@ -66,7 +67,7 @@ export default {
         {
           id: 2,
           title: '资金发票',
-          icon: 'iconfont icon-baokuan-',
+          icon: 'iconfont icon-31gouwuche',
           list: [
             {id: 5, name: '专属账户', router: '/projectNew4'},
             {id: 6, name: '账户余额', router: '/projectNew5'},
@@ -93,6 +94,11 @@ export default {
         return
       }
       this.showIndex = id
+    },
+    mediaBtn () {
+      // console.log(1)
+      this.isMedia = !this.isMedia
+      console.log(this.isMedia)
     }
   }
 }
@@ -109,6 +115,11 @@ export default {
     color: #2c3e50;
     /* margin-top: 60px; */
   }
+  .one_hide{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
   .box{
   }
   .header{
@@ -122,6 +133,8 @@ export default {
     height: var(--h);
     line-height: var(--h);
     color: #fff;
+    text-align: center;
+    transition: .5s;
   }
   .head_box{
     background-color: #2c4198;
@@ -152,9 +165,11 @@ export default {
     padding: 0 8px;
     background-color: #fff;
     box-sizing: border-box;
-    height: calc(100vh - 63px);
+    /* height: calc(100vh - 63px); */
+    height: auto;
     text-align: left;
     box-shadow: 5px 5px 10px 0 #e6e6e6;
+    transition: .5s;
   }
   .main-lef-box p{
     font-size: 13px;
@@ -170,9 +185,14 @@ export default {
     line-height: var(--h);
     border-radius: calc(var(--h)/2);
     color: ##555555;
+    display: flex;
+  }
+  .main-lef-box h3 span{
+    flex: 1;
   }
   .main-lef-box h3::before{
     margin-right: 15px;
+    font-size: 20px;
   }
   .main-lef-box h3.active{
     color: #2c4198;
