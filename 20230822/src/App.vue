@@ -17,7 +17,8 @@
       <div class="main-lef-box" :style="{width:isMedia === false ? '80px' : '250px'}">
         <div>
           <p class="one_hide" :style="{display: isMedia === false ? 'none' : 'block'}">常规操作</p>
-          <h3 class="iconfont icon-shouye"><span class="one_hide" :style="{display: isMedia === false ? 'none' : 'inline-block'}">首页</span></h3>
+          <router-link to="/"><h3 class="iconfont icon-shouye"><span class="one_hide" :style="{display: isMedia === false ? 'none' : 'inline-block'}">首页</span></h3></router-link>
+          <router-link to="/project"><h3 class="iconfont icon-shouye"><span class="one_hide" :style="{display: isMedia === false ? 'none' : 'inline-block'}">首页</span></h3></router-link>
         </div>
         <div>
           <p class="one_hide" :style="{display: isMedia === false ? 'none' : 'block'}">业务管理</p>
@@ -159,6 +160,7 @@ export default {
   }
   .bodyer{
     background: #f5f5f5;
+    /* height: auto; */
   }
   .main-lef-box{
     width: 250px;
@@ -166,7 +168,6 @@ export default {
     background-color: #fff;
     box-sizing: border-box;
     /* height: calc(100vh - 63px); */
-    height: auto;
     text-align: left;
     box-shadow: 5px 5px 10px 0 #e6e6e6;
     transition: .5s;
@@ -177,6 +178,9 @@ export default {
     color: #868e96;
     padding: 0 10px;
   }
+  .main-lef-box a{
+    color: #555555;
+  }
   .main-lef-box h3{
     padding: 0 23px;
     font-size: 18px;
@@ -184,7 +188,6 @@ export default {
     height: var(--h);
     line-height: var(--h);
     border-radius: calc(var(--h)/2);
-    color: ##555555;
     display: flex;
   }
   .main-lef-box h3 span{
@@ -199,8 +202,10 @@ export default {
     background: #e1e0e0;
   }
   .main-lef-box h3:hover{
-    color: #2c4198;
     background: #e1e0e0;
+  }
+  .main-lef-box h3:hover{
+    color: #2c4198;
   }
   .main-lef-box dl dd{
     padding-left: 20px;
@@ -210,5 +215,8 @@ export default {
   }
   .main-lef-box dl dd a::before{
     margin-right: 20px;
+  }
+  .main-rig-box{
+    padding: 0 13px;
   }
 </style>
