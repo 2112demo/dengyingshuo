@@ -1,5 +1,6 @@
 <template>
   <div id="box">
+    <hotSearch></hotSearch>
     <h3 class="tabbar">
       <i class="iconfont icon-shouye"></i> /
       <span> 首页</span>
@@ -63,8 +64,13 @@
 </template>
 
 <script>
+import hotSearch from './childrens/hotSearch'
 export default {
   name: 'index',
+  components: {
+    // 组件名: 组件 hotSearch变成自定义标签
+    'hotSearch': hotSearch
+  },
   data () {
     return {
       oneDemo: [
