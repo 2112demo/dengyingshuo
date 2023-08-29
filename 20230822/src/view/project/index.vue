@@ -152,7 +152,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
   #box{
     padding: 10px 0 0 0;
   }
